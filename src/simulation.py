@@ -61,6 +61,10 @@ class Simulation:
         room = self.building.floors[floor_index].rooms[room_index]
         room.blocked = True
 
+    def unblock_room(self, floor_index: int, room_index: int):
+        room = self.building.floors[floor_index].rooms[room_index]
+        room.blocked = False
+
     def reset_sensor(self, floor_index: int, room_index: int):
         room = self.building.floors[floor_index].rooms[room_index]
         room.reset_sensor()
@@ -79,9 +83,10 @@ class Simulation:
             print("\n1. Avanzar simulación (mover zombis)")
             print("2. Limpiar habitacion")
             print("3. Bloquear habitacion")
-            print("4. Resetear sensor")
-            print("5. Guardar sesion")
-            print("6. Salir")
+            print("4. Desloquear habitacion")
+            print("5. Resetear sensor")
+            print("6. Guardar sesion")
+            print("7. Salir")
             choice = input("Elige una opción: ")
 
             if choice == "1":
@@ -92,10 +97,12 @@ class Simulation:
             elif choice == "3":
                 self.handle_room_action(self.blocked_room, "bloquear")
             elif choice == "4":
-                self.handle_room_action(self.reset_sensor, "resetear el sensor")
+                self.handle_room_action(self.unblock_room, "desbloquear")
             elif choice == "5":
-                self.save_state()
+                self.handle_room_action(self.reset_sensor, "resetear el sensor")
             elif choice == "6":
+                self.save_state()
+            elif choice == "7":
                 print("Saliendo de la simulación.")
                 break
             else:
@@ -110,6 +117,8 @@ class Simulation:
                 action_name = "ha sido limpiada"
             elif action_name == "bloquear":
                 action_name = "ha sido bloqueada"
+            elif action_name == "bloquear":
+                action_name = "ha sido desbloqueada"
             elif action_name == "resetear el sensor":
                 action_name = "ha reseteado su sensor"
             print(f"Habitación {room_index} en el piso {floor_index} {action_name}.")
