@@ -18,6 +18,7 @@ El proyecto está configurado para ejecutarse como un paquete de Python. Para in
 El programa te pedirá opciones para crear un nuevo edificio o cargar un edificio existente desde un archivo guardado.
 
 Ejemplo de Uso
+
 Cuando inicies la simulación, el programa te preguntará por el número de pisos y habitaciones por piso del edificio. Luego, podrás interactuar con el sistema usando las opciones del menú.
 
 Ejemplo de Menú:
