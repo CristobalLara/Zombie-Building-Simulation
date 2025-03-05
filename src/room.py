@@ -14,13 +14,15 @@ class Room:
 
     def remove_zombies(self):
         self.has_zombies = False
-        self.sensor.reset()
 
     def reset_sensor(self):
         self.sensor.reset()
 
     def __str__(self):
-        state = "☠️" if self.has_zombies else "✅"
+        if self.sensor.state == "alert":
+            state = "☠️" if self.has_zombies else "❗"
+        else:
+            state = "✅"
         return f"Room {self.room_number}: {state} (Sensor: {self.sensor.state})"
 
     # Guardar el estado de la habitación, incluyendo el sensor
