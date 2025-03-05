@@ -33,7 +33,7 @@ class Session:
         print("No se encontró un archivo de estado guardado o el archivo está corrupto. Iniciando nueva simulación.")
         return None
 
-    def start_session(self):  # Agregado self
+    def start_session(self):
         print("\nBienvenido a Zombie Survival Building!")
 
         building = self.load_state()

@@ -25,24 +25,21 @@ class Room:
             state = "✅"
         return f"Room {self.room_number}: {state} (Sensor: {self.sensor.state})"
 
-    # Guardar el estado de la habitación, incluyendo el sensor
     def to_dict(self):
         return {
             "room_number": self.room_number,
             "has_zombies": self.has_zombies,
             "blocked": self.blocked,
             "stairs": self.stairs,
-            "sensor": self.sensor.to_dict()  # Guardar el estado del sensor
+            "sensor": self.sensor.to_dict()
         }
 
-    # Cargar el estado de la habitación, incluyendo el sensor
     def from_dict(self, data: dict):
         self.room_number = data.get("room_number", self.room_number)
         self.has_zombies = data.get("has_zombies", False)
         self.blocked = data.get("blocked", False)
         self.stairs = data.get("stairs", False)
         
-        # Restaurar el estado del sensor
         sensor_data = data.get("sensor", {})
         self.sensor.from_dict(sensor_data)
         

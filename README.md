@@ -7,7 +7,9 @@ Python 3.11 o superior
 
 Clona o descarga este repositorio.
 
-Navega a la carpeta del proyecto en tu terminal y ejecuta el siguiente comando:
+Navega a la carpeta del proyecto en tu terminal.
+
+El proyecto está configurado para ejecutarse como un paquete de Python. Para iniciar la simulación, utiliza el siguiente comando:
 
 ```
     python -m main
@@ -42,15 +44,18 @@ A partir de aquí, puedes seleccionar lo que desees hacer.
 
 **Simulation**: Controla la lógica de la simulación, incluyendo el movimiento de los zombis, las acciones del usuario y la persistencia del estado del edificio.
 
-**Main**: Punto de entrada del programa, donde el usuario puede iniciar una nueva simulación o cargar una sesión guardada.
+**Session**: Inicia la simulacion desde las indicaciones del usuario o carga un archivo guardado.
+
+**Main**: Punto de entrada del programa, donde se inicia la sesion del usuario.
 
 ## Arquitectura:
-La arquitectura del sistema está basada en una estructura jerárquica de clases que representan el edificio, sus pisos, habitaciones y sensores:
+La arquitectura del sistema está basada en una estructura jerárquica en cadena de clases que representan el edificio, sus pisos, habitaciones y sensores:
 
-- El Building tiene una lista de Floor.
-- Cada Floor tiene una lista de Room.
 - Cada Room tiene un Sensor que alerta si hay zombis en la habitación.
-- La simulación maneja el movimiento de los zombis entre las habitaciones y pisos, además de permitir que el usuario interactúe con las habitaciones (limpiar, bloquear, resetear sensores).
+- Cada Floor tiene una lista de Room.
+- Building tiene una lista de Floor.
+- Simulation maneja el movimiento de los zombis entre las habitaciones y pisos, además de permitir que el usuario interactúe con las habitaciones (limpiar, bloquear, resetear sensores).
+- Session carga un posible archivo guardado, o genera un edificio basado en las especificaciones del usuario.
 
 ## Funcionalidades
 
@@ -75,3 +80,8 @@ La aplicación permite al usuario interactuar mediante un menú de opciones:
 Los Zombies tienen una probabilidad del 50% de abandonar por completo una habitaciones para invadir las habitaciones adyacentes o invadir las habitaciones y mantener la habitacion original infestada definida por la constante `LEAVE_CHANCE`.
 Esto se establece en la linea 52 de simulation.py.
 
+Se establecio el movimiento vertical de los zombies implementando la variable booleana `stairs` a los cuartos, si el valor de `stairs` es `True` la habitacion superior al cuarto se considera adyacente y los zombies pueden subir. Adicionalmente se decidio implementar una escalera principal por la cual se puede llegar desde el primer piso hasta el ultimo, igual que la estructura de un edificio normal. La ubicacion de la escalera se elije de manera aleatoria al generarse el edificio.
+
+Los sensores se mantienen en `normal` siempre cuando no hayan detectado zombies, si detectan zombies se mantendran en `alert` hasta que sean reseteados por el usuario.
+
+Las acciones de los usuarios como limpiar, bloquear y resetear sensor, no avanzan los turnos de los zombies para poder ver con claridad el cambio realizado en el simulador.
