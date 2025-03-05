@@ -82,6 +82,6 @@ Esto se establece en la linea 52 de simulation.py.
 
 Se establecio el movimiento vertical de los zombies implementando la variable booleana `stairs` a los cuartos, si el valor de `stairs` es `True` la habitacion superior al cuarto se considera adyacente y los zombies pueden subir. Adicionalmente se decidio implementar una escalera principal por la cual se puede llegar desde el primer piso hasta el ultimo, igual que la estructura de un edificio normal. La ubicacion de la escalera se elije de manera aleatoria al generarse el edificio.
 
-Los sensores se mantienen en `normal` siempre cuando no hayan detectado zombies, si detectan zombies se mantendran en `alert` hasta que sean reseteados por el usuario.
+Los sensores se mantienen en `normal` siempre cuando no hayan detectado zombies, si detectan zombies se mantendran en `alert` hasta que sean reseteados por el usuario. El enunciado no especificaba si el sensor debia volver al estado normal si es que no detectaba zombies, solo que debia entrar en alerta al detectarlos.
 
-Las acciones de los usuarios como limpiar, bloquear y resetear sensor, no avanzan los turnos de los zombies para poder ver con claridad el cambio realizado en el simulador.
+Las acciones de los usuarios como limpiar, bloquear y resetear sensor, no avanzan los turnos de los zombies. El enunciado no especificaba si estas acciones causaban el movimiento de los zombies pero se hizo asi para poder ver con claridad el cambio realizado en el simulador.
