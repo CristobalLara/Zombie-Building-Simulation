@@ -27,11 +27,40 @@ Bienvenido a Zombie Survival Building!
 1. Avanzar simulación (mover zombis)
 2. Limpiar habitación
 3. Bloquear habitación
-4. Resetear sensor
-5. Guardar sesión
-6. Salir
+4. Desloquear habitación
+5. Resetear sensor
+6. Guardar sesión
+7. Salir
 Elige una opción:
 A partir de aquí, puedes seleccionar lo que desees hacer.
+
+## Comandos
+La aplicación permite al usuario interactuar mediante un menú de opciones:
+
+- Avanzar simulación (mover zombis): Los zombis se mueven a otras habitaciones adyacentes.
+- Limpiar habitación: Se pueden limpiar habitaciones infestadas por zombis.
+- Bloquear habitación: Las habitaciones pueden ser bloqueadas, evitando que los zombis se muevan a ellas.
+- Desloquear habitación: Las habitaciones pueden ser desbloqueadas, permitiendo que los zombis se muevan a ellas.
+- Resetear sensor: Resetea el sensor en una habitación.
+- Guardar sesión: Guarda el estado actual del edificio en un archivo.
+- Salir: Sale de la simulación.
+
+## Leyenda
+La aplicación utiliza simbolos para representar en consola los distintos elementos que la componen:
+- Calavera ☠️: Representa una habitacion infestada de zombies.
+- Alerta ❗: Representa un sensor en estado de alerta pero libre de zombies.
+- Check Mark ✅: Representa un sensor en estado normal libre de zombies.
+- Puerta 🚪: Representa una habitacion que puede ser infestada por zombies.
+- Flecha 🔼: Representa una habitacion con escalera, es decir que permite infestar las habitaciones de arriba y abajo.
+- Prohibido 🚫: Representa una habitacion bloqueda que no puede ser infestada por zombies.
+
+## Funcionalidades
+
+- Crear un edificio: Puedes crear un edificio con un número de pisos y habitaciones por piso.
+- Simular el movimiento de los zombis: Los zombis se mueven entre habitaciones adyacentes.
+- Interactuar con las habitaciones: El usuario puede limpiar, bloquear, desbloquear habitaciones o resetear los sensores.
+- Guardar y cargar el estado de la simulación: El estado de la simulación puede guardarse en un archivo JSON para reanudarlo más tarde.
+- Ver el estado del edificio: El estado de las habitaciones, zombis y sensores se muestra en la consola.
 
 ## Clases:
 **Building**: Representa el edificio. Contiene múltiples pisos, cada uno con un número de habitaciones.
@@ -57,24 +86,6 @@ La arquitectura del sistema está basada en una estructura jerárquica en cadena
 - Simulation maneja el movimiento de los zombis entre las habitaciones y pisos, además de permitir que el usuario interactúe con las habitaciones (limpiar, bloquear, resetear sensores).
 - Session carga un posible archivo guardado, o genera un edificio basado en las especificaciones del usuario.
 
-## Funcionalidades
-
-- Crear un edificio: Puedes crear un edificio con un número de pisos y habitaciones por piso.
-- Simular el movimiento de los zombis: Los zombis se mueven entre habitaciones adyacentes.
-- Interactuar con las habitaciones: El usuario puede limpiar, bloquear habitaciones o resetear los sensores.
-- Guardar y cargar el estado de la simulación: El estado de la simulación puede guardarse en un archivo JSON para reanudarlo más tarde.
-- Ver el estado del edificio: El estado de las habitaciones, zombis y sensores se muestra en la consola.
-
-## Comandos
-La aplicación permite al usuario interactuar mediante un menú de opciones:
-
-- Avanzar simulación (mover zombis): Los zombis se mueven a otras habitaciones adyacentes.
-- Limpiar habitación: Se pueden limpiar habitaciones infestadas por zombis.
-- Bloquear habitación: Las habitaciones pueden ser bloqueadas, evitando que los zombis se muevan a ellas.
-- Resetear sensor: Resetea el sensor en una habitación.
-- Guardar sesión: Guarda el estado actual del edificio en un archivo.
-- Salir: Sale de la simulación.
-
 ## Consideraciones del Desarrollo:
 
 Los Zombies tienen una probabilidad del 50% de abandonar por completo una habitaciones para invadir las habitaciones adyacentes o invadir las habitaciones y mantener la habitacion original infestada definida por la constante `LEAVE_CHANCE`.
@@ -84,4 +95,4 @@ Se establecio el movimiento vertical de los zombies implementando la variable bo
 
 Los sensores se mantienen en `normal` siempre cuando no hayan detectado zombies, si detectan zombies se mantendran en `alert` hasta que sean reseteados por el usuario. El enunciado no especificaba si el sensor debia volver al estado normal si es que no detectaba zombies, solo que debia entrar en alerta al detectarlos.
 
-Las acciones de los usuarios como limpiar, bloquear y resetear sensor, no avanzan los turnos de los zombies. El enunciado no especificaba si estas acciones causaban el movimiento de los zombies pero se hizo asi para poder ver con claridad el cambio realizado en el simulador.
+Las acciones de los usuarios como limpiar, bloquear, desbloquear y resetear sensor, no avanzan los turnos de los zombies. El enunciado no especificaba si estas acciones causaban el movimiento de los zombies pero se hizo asi para poder ver con claridad el cambio realizado en el simulador.
