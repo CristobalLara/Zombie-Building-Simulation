@@ -13,7 +13,7 @@ class Floor:
         return self.rooms[room_number] if 0 <= room_number < len(self.rooms) else None
 
     def __str__(self):
-        floor_status = f"Floor {self.floor_number}\n"
+        floor_status = f"Piso {self.floor_number}\n"
         for room in self.rooms:
             if room.stairs:
                 stair_icon = "🔼"

@@ -19,11 +19,11 @@ class Room:
         self.sensor.reset()
 
     def __str__(self):
-        if self.sensor.state == "alert":
+        if self.sensor.state == "alerta":
             state = "☠️" if self.has_zombies else "❗"
         else:
             state = "✅"
-        return f"Room {self.room_number}: {state} (Sensor: {self.sensor.state})"
+        return f"Habitacion {self.room_number}: {state} (Sensor: {self.sensor.state})"
 
     def to_dict(self):
         return {

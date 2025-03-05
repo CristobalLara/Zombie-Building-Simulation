@@ -3,7 +3,7 @@ class Sensor:
         self.state = 'normal'
 
     def set_alert(self):
-        self.state = 'alert'
+        self.state = 'alerta'
 
     def reset(self):
         self.state = 'normal'
