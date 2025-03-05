@@ -106,7 +106,13 @@ class Simulation:
             floor_index = int(input("Elije el piso: "))
             room_index = int(input("Elije la habitación a {}: ".format(action_name)))
             action(floor_index, room_index)
-            print(f"Habitación {room_index} en el piso {floor_index} ha sido {action_name}.")
+            if action_name == "limpiar":
+                action_name = "ha sido limpiada"
+            elif action_name == "bloquear":
+                action_name = "ha sido bloqueada"
+            elif action_name == "resetear el sensor":
+                action_name = "ha reseteado su sensor"
+            print(f"Habitación {room_index} en el piso {floor_index} {action_name}.")
         except ValueError:
             print("Por favor, ingresa un número válido.")
         except IndexError:
