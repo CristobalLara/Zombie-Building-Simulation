@@ -7,3 +7,13 @@ class Sensor:
 
     def reset(self):
         self.state = 'normal'
+
+    # Métodos para guardar y cargar el estado del sensor
+    def to_dict(self):
+        return {
+            "state": self.state
+        }
+
+    def from_dict(self, data: dict):
+        self.state = data.get("state", "normal")
+        return self
